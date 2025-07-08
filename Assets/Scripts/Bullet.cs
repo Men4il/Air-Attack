@@ -11,24 +11,18 @@ public class Bullet : MonoBehaviour
 
     private Rigidbody rb;
 
-    /// <summary>
-    /// Получает компонент Rigidbody для управления физикой пули.
-    /// </summary>
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    /// <summary>
-    /// Активирует таймер на возврат пули в пул после заданного времени жизни.
-    /// </summary>
     private void OnEnable()
     {
         Invoke(nameof(ReturnToPool), lifeTime);
     }
 
     /// <summary>
-    /// Обрабатывает столкновение пули с объектом. Наносит урон врагу, если это необходимо,
+    /// Обрабатывает столкновение пули с объектом. Наносит урон врагу при попадании
     /// и возвращает пулю обратно в пул.
     /// </summary>
     /// <param name="other">Коллайдер объекта, с которым произошло столкновение.</param>
@@ -40,7 +34,6 @@ public class Bullet : MonoBehaviour
 
             if (enemy != null)
             {
-                // Наносим урон
                 enemy.TakeDamage(damage);
             }
         }

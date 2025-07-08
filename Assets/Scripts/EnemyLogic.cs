@@ -211,6 +211,7 @@ public class EnemyLogic : MonoBehaviour
     /// </summary>
     private void Die()
     {
+        if (isDead) return;
         isDead = true;
 
         Collider col = GetComponent<Collider>();
